@@ -1,0 +1,177 @@
+<DOCTYPE html>
+  <html>
+
+  <head>
+    <title> Quality survey</title>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style> 
+      body{ background: linear-gradient(to bottom, #13CFDD 0%, #2388CB 42%, #002142 100%);}
+header{ text-align: center; background-color: #002142; padding: 50px 20px 20px 20px; margin: 100px 50px 70px 50px; }
+#title{ color: white;}
+nav{ text-align: right; letter-spacing: 2px;
+word-spacing: 15px; color:white;}
+#description { font-style: oblique; color:#13CFDD }
+#backscreen{ margin: auto; background-color:white; border-radius: 15px; width:50%;}
+
+#survey-form{font-family:cursive, sans-serif; font-size: 20px; margin:5% 5% 5% 5%;padding: 3% 3%; }
+#frontscreen{ background-color:#2388CB; border-radius: 25px; padding: 3% 15% 5% 15%; display : grid; grid-template-colums: 1fr 1fr; grid-row-gap: 10px;}
+#name-label{ grid-area: 1/1/2/2; color: white;}
+#name{ grid-area: 1/2/2/3; } 
+#email-label{color: white;}
+#email{}
+#number-label{ color: white;}
+#number{}
+#dropdown-label{ color: white;}
+#dropdown{ }
+#evaluation{grid-area:5/1/7/3; color:white;}
+#department{grid-area:7/1/10/3; color:white;}
+#wrapper{display : grid; grid-template-colums: 1fr 1fr; grid-row-gap: 10px;}
+#eval-labl{grid-column:1/2; padding:10px;}
+#eval{ grid-column:2/3;}
+#choice{grid-area:10/1/11/3; color:white;}
+#comment{grid-area:11/1/14/3; color:white; width:auto; display: grid;grid-template-colums: 1fr 1fr; grid-row-gap: 10px;}
+#comment-text{ color:#13CFDD; resize:none;grid-area:1/1/2/3;}
+#submit{ grid-area:14/1/15/3;width:30%;margin:auto;}
+a{ color: white;}
+
+
+footer{ text-align: center; margin: 50px;}
+
+      </style>
+  </head>
+
+  <body>
+    <main id="main">
+       <header>
+        <h1 id="title"> Engineering service - Customer evaluation</h1>
+         <p id="description"> Thank you dear customer to take time and fullfill your quality rating related to our service</p>
+         <nav> <a href=#>Home</a> <a href=#> Account</a></nav>
+      </header>
+      <div id="backscreen"> 
+       
+         <form id="survey-form" action="" method="get">
+          <div id="frontscreen">
+           
+          <label for="name" id="name-label">Name</label>
+        <input type="text" name="name" id="name" placeholder="name" required>
+            
+               
+            
+         <label for="email" id="email-label" >e-mail</label>
+         <input type="email" name="email" id="email" placeholder="email" required>
+             
+           
+         <label for="number" id="number-label" >Note [0-20]</label>
+          <input type="number" name="number" id="number" placeholder="Note from 0 to 20" min="0" max="20" step="1" required> 
+            
+         <label for="select" id="dropdown-label">which size is your company? </label>
+          <select name="select-size" id="dropdown" placeholder=""> 
+            <option value="0"> choose the size of your company</option>
+            <option value="0-50"> 0-50 </option>
+            <option value="50-250"> 50-250 </option>
+            <option value="250-1000"> 250-1000 </option>
+            <option value="1000+"> 1000+ </option>
+            </select>
+            <fieldset id="evaluation"> 
+               <legend>your evaluation</legend>
+                <div id="wrapper">    
+        
+         <label for="select" id="quality-label">Quality of the service </label>
+              
+          <select name="select-quality" id="eval-quality" placeholder=""> 
+            <option value=""> Your evaluation</option>
+            <option value="very_satisfied"> Very satisfied </option>
+            <option value="satisfied"> Satisfied </option>
+            <option value="neutral"> Neutral </option>
+            <option value="unsatisfied"> Unsatisfied </option>
+            </select>
+
+                <label for="select" id="time-label">Time to get feedback </label>
+          <select name="select-time" id="eval-time" placeholder=""> 
+            <option value=""> Your evaluation</option>
+            <option value="very_satisfied"> Very satisfied </option>
+            <option value="satisfied"> Satisfied </option>
+            <option value="neutral"> Neutral </option>
+            <option value="unsatisfied"> Unsatisfied </option>
+            </select>
+            
+                <label for="select" id="technical-label">Technical support</label>
+          <select name="select-technical" id="eval-technical" placeholder=""> 
+            <option value="0"> Your evaluation</option>
+            <option value="very_satisfied"> Very satisfied </option>
+            <option value="satisfied"> Satisfied </option>
+            <option value="neutral"> Neutral </option>
+            <option value="unsatisfied"> Unsatisfied </option>
+            </select>
+                  
+                <label for="select" id="staff-label">Staff</label>
+          <select name="select-staff" id="eval-staff" placeholder=""> 
+            <option value="0"> Your evaluation</option>
+            <option value="very_satisfied"> Very satisfied </option>
+            <option value="satisfied"> Satisfied </option>
+            <option value="neutral"> Neutral </option>
+            <option value="unsatisfied"> Unsatisfied </option>
+            </select>
+              </div>
+            </fieldset>
+            
+   <fieldset id="department">
+    <legend>which departement are you working with?</legend>
+      <input type="checkbox" name="checkbox-sales" id="checkbox-sales" value="sales">
+      <label for="checkbox" id="sales-Dep" >Sales department</label>
+     <br>
+        <input type="checkbox" name="checkbox-account" id="checkbox-account" value="accou t">
+     <label for="checkbox" id="account-Dep"> Account department</label>
+        
+     <br> <input type="checkbox" name="checkbox-finance" id="checkbox-finance" value="finance">
+          <label for="checkbox" id="finance-Dep" >Finance department</label>
+         <br> <input type="checkbox" name="checkbox-technical" id="checkbox-technical" value="techinical">
+     <label for="checkbox" id="technical-Dep"> Technical department</label>
+         <br>
+        <input type="checkbox" name="checkbox-quality" id="checkbox-quality" value="quality">
+     <label for="checkbox" id="quality-Dep"> Quality department</label>
+        
+     <br> <input type="checkbox" name="checkbox-logistic" id="checkbox-logisitc" value="logistic" id="logistic-Dep" >Logistic department</label>
+     
+           </fieldset>
+     <fieldset id="choice">
+    <legend> what you will do?</legend>
+      <input type="radio" name="choice" value="1" id="radio_choice_1">
+      <label for="radio" id="radio_choice_1-label" >tell other peole about our services</label>
+     <br>
+        <input type="radio" name="choice" id="radio_choice_2" value="2" >
+     <label for="radio" id="radio_choice_2-label"> continue use our services</label>
+        
+     <br> <input type="radio" name="choice" id="radio_choice_3" value="3">
+          <label for="radio" id="radio_choice_3-label">use our services time to time</label>
+         <br> <input type="radio" name="choice" id="radio_choice_4" value="4">
+     <label for="radio" id="radio_choice_4-label"> no more use our services</label>
+            </fieldset>
+      
+           <fieldset id="comment"> <legend> Comment </legend> 
+           <textarea id="comment-text" placeholder="comment"> </textarea>
+           
+           </fieldset>
+    <input id="submit" type="submit" value="Submit your survey">
+            
+           </div> 
+        </form>
+     
+        </div>
+     
+      
+      
+      
+  <footer id="top">
+            <a href= #main target="" rel=""> Top </a></p>
+
+            </footer>
+    <script src='https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js'></script>
+    </main>
+    
+
+    
+  </body>
+
+  </html>

@@ -1,0 +1,1069 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title> C programming- DYS</title>
+  <meta charset="utf-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+  <style>
+      .container {
+         display:grid;
+        grid-template-columns: 300px 1fr; 
+        grid-template-areas:
+          "s h " 
+          "s c "
+          "s f ";
+          grid-gap: 10px; margin:auto;
+        }
+        .header{ grid-area :h; margin: auto; text-align: center; size: 24px;}
+        .main{grid-area :c; font-size: 16px; }
+        #main-doc{ }
+        .nav{position: fixed; grid-area :s; min-width: 200px; max-width: 300px;top:5px; left: 5px; width: 300px; height: 100%; border-right: solid; border-color: green; }
+        #navbar{font: Arial, sans-serif; }
+        .main-section{font: serif, Arial; }
+        .footer{ grid-area :f;}
+        .terminal{ background: black; color: white;font-size:20px; padding:1px 500px 1px 10px; margin: 10px 1000px 10px 10px;}
+        .code{ background: gray; color: blue; font-size:20px; padding:10px; margin: 1px 1000px 1px 10px; }
+
+
+    </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <header class="header"> Introductio to C programming </header>
+  <nav class="nav" id="navbar">
+
+      <h4>C programming</h4>
+      <ul>
+        <li><a href=#introduction>Introduction to C</a></li>
+        <li><a href=#variables_types>Variables and types</a></li>
+        <li><a href=#constants>constants</a></li>
+        <li><a href=#operators>Operators</a></li>
+        <li><a href=#conditionals>Conditionals</a></li>
+        <li><a href=#loops>Loops</a></li>
+        <li><a href=#arrays>Arrays</a></li>
+        <li><a href=#strings>Strings</a></li>
+        <li><a href=#pointers>Pointers</a></li>
+        <li><a href=#functions>Functions</a></li>
+        <li><a href=#input_output>Input and output</a></li>
+        <li><a href=#variables_scope>Variables scope</a></li>
+        <li><a href=#static_variables>Static variables</a></li>
+        <li><a href=#global_variables>Global variables</a></li>
+        <li><a href=#type_definitions>Type definitions</a></li>
+        <li><a href=#enumerated_types>Enumerated Types</a></li>
+        <li><a href=#structures>Structures</a></li>
+        <li><a href=#command_line_parameters>Command line parameters</a></li>
+        <li><a href=#header_files>Header files</a></li>
+        <li><a href=#preprocessor>The preprocessor</a></li>
+        <li><a href=#reference>Reference</a></li>
+      </ul>
+
+    </nav>
+    <main class="main" id="main-doc">
+      <section class="main-section"  id="introduction">
+<h3>Introduction to C</h3>
+
+<p>C is probably the most widely known programming language. It is used as the reference language for computer science courses all over the world, and it's probably the language that people learn the most in school along with Python and Java.</p>
+
+<p>Today, C is widely used in embedded devices, and it powers most of the Internet servers, which are built using Linux. The Linux kernel is built using C, and this also means that C powers the core of all Android devices. We can say that C code runs a good portion of the entire world. Right now. Pretty remarkable.</p>
+ <p>C brought to the table was a language that was simple to implement and that had a compiler that could be easily ported to different machines. C is a compiled programming language, like Go, Java, Swift or Rust. Other popular programming language like Python, Ruby or JavaScript are interpreted. The difference is consistent: a compiled language generates a binary file that can be directly executed and distributed.</p>
+
+<p>the first C program : "Hello, World!"</p>
+        <div class="code">
+<code>
+//hello.c <br>
+
+#include &lt;stdio.h &gt;<br>
+
+int main(void) {<br>
+    printf("Hello, World!");<br>
+}<br>
+</code>
+        </div>
+<p>Let's describe the program source code: we first import the stdio library. This library gives us access to input/output functions.  stdio is the library that provides the printf() function.</p>
+
+<p>This function is wrapped into a main() function. The main() function is the entry point of any C program.</p>
+
+<p>How do we execute a C program?</p>
+
+<p>As mentioned, C is a compiled language. To run the program we must first compile it. Any Linux or macOS computer already comes with a C compiler built-in. For Windows, you can use the Windows Subsystem for Linux (WSL).</p>
+
+<p>Type the program above into a hello.c file. You can use any editor,go to terminal and type</p>
+<div class= "terminal">
+<p>gcc hello.c -o hello</p>
+</div>
+The program should give you no errors: but it should have generated a hello executable. Now type
+<div class= "terminal">
+  <p>./hello</p> </div>
+
+<p>to run it:</p>
+
+<p>I use ./ to the program name to tell the terminal that the command is in the current folder</p>
+</section>
+
+<section class="main-section"id="variables_types">
+<h3>Variables and types</h3>
+
+<p>C is a statically typed language. When you create a variable in C, you have to specify the type of a variable at the declaration. In this example we initialize a variable age with type int:</p>
+  <div class="code"><code> int age;</code></div>
+<p>A variable name can contain any uppercase or lowercase letter, can contain digits and the underscore character, but it can't start with a  digit. AGE and Age10 are valid variable names, 1age is not.</p>
+<p>You can also initialize a variable at declaration, specifying the initial value: </p>
+ <div class="code"><code>int age = 37;</code> </div>
+<p>Once you declare a variable, you are then able to use it in your program code. You can change its value at any time, using the = operator for example, like in age = 100; (provided the new value is of the same type).</p>
+<p>In this case:</p>
+ <div class="code"><code>
+#include &lt;stdio.h &gt;<br>
+int main(void) {<br>
+&#9; int age = 0;<br>
+ &#9; age = 37;<br>
+ &#9; printf("%u", age);<br>
+}
+</code> </div>
+<p>The C built-in data types are int, char, short, long, float, double, long double. </p>
+<ul>
+<li>char size: 1 bytes</li>
+<li>int size: 4 bytes<l/i>
+<li>short size: 2 bytes</li>
+<li>long size: 8 bytes</li>
+<li>float size: 4 bytes</li>
+<li>double size: 8 bytes</li>
+<li>long double size: 16 bytes</li></ul>
+
+<p>C provides us the following types to define integer values: char, int, short, long .</p>
+<p>Most of the time, you'll likely use an int to store an integer. But in some cases, you might want to choose one of the other 3 options.</p>
+<p>The char type is commonly used to store letters of the ASCII chart, but it can be used to hold small integers from -128 to 127. It takes at least 1 byte.</p><br>
+<p>Given all those limits, a question might come up: how can we make sure our numbers do not exceed the limit? And what happens if we do exceed the limit?</p>
+
+<p>If you have an unsigned int number at 255, and you increment it, you'll get 256 in return. As expected. If you have an unsigned char number at 255, and you increment it, you'll get 0 in return. It resets starting from the initial possible value.</p>
+
+</section>
+<section class="main-section" id="constants">
+<h3>Constants</h3>
+<p>A constant is declared similarly to variables, except it is prepended with the const keyword, and you always need to specify a value.</p>
+
+ <div class="code"><code> const int age = 37;</code>  </div>
+
+<p>This is perfectly valid C, although it is common to declare constants uppercase:</p>
+
+ <div class="code"><code> const int AGE = 37;</code>  </div>
+
+<p>It's just a convention, but one that can greatly help you while reading or writing a C program as it improves readability. Uppercase name means constant, lowercase name means variable.</p>
+
+<p>Another way to <b>define </b> constants is by using this syntax:</p>
+
+ <div class="code"><code> #define AGE 37</code>  </div>
+
+<p>The C compiler will infer the type from the value specified, at compile time.</p>
+</section>
+      
+<section class="main-section" id="operators">
+<h3>Operators</h3>
+
+
+<p>C offers us a wide variety of operators that we can use to operate on data.
+
+In particular, we can identify various groups of operators:</p>
+
+    <ul>
+<li>arithmetic operators</li>
+  <li> comparison operators</li>
+   <li>logical operators</li>
+   <li>compound assignment operators</li>
+   <li>bitwise operators</li>
+   <li>pointer operators</li>
+   <li>structure operators</li>
+    <li>miscellaneous operators</li></ul>
+
+<p>In this section we are using 2 imaginary variables a and b as examples.</p>
+<br>
+<h4>Arithmetic operators</h4>
+
+<p>Binary operators work using two operands:</p>
+<table>
+<tr><th>Operator</th> <th>Name</th><th>Example</td></th>
+<tr><td>= </td><td>Assignment </td><td>a = b</td></tr>	
+<tr><td>+</td><td> Addition </td><td>a + b</td></tr>
+<tr><td>- </td><td>Subtraction </td><td>	a - b</td></tr>
+<tr><td>* </td><td>	Multiplication</td><td> a * b</td>
+<tr><td>/ </td><td>	Division </td><td>a / b</td></tr>
+<tr><td>% </td><td>	Modulo</td><td> a % b</td></tr></table>
+
+<p>Unary operators only take one operand:</p>
+<table>
+<tr><th>Operator </th> <th>	Name </th> <th>Example</th> </tr>
+<tr><td>+ </td><td>		Unary plus </td><td>		+a</td></tr>
+<tr><td>- </td><td>		Unary minus </td><td>		-a</td></tr>
+<tr><td>++ </td><td>		Increment </td><td>	 	a++ or ++a</td></tr>
+<tr><td>-- </td><td>		Decrement </td><td>		a-- or --a</td></tr>
+
+<p>The difference between a++ and ++a is that a++ increments the a variable after using it. ++a increments the a variable before using it.<p>
+
+<p>For example:<p>
+
+<div class="code"><code> int a = 2;<br>
+int b;<br>
+b = a++ /* b is 2, a is 3 */<br>
+  b = ++a /* b is 4, a is 4 */</code> </div>
+
+<p>The same applies to the decrement operator.<p><br>
+<h4>Comparison operators</h4>
+<table><tr><th>Operator </th><th>	Name</th><th>Example</th></tr>
+<tr><td>==</td><td>Equal operator </td><td>a == b</td></tr>
+<tr><td>!= </td><td>Not equal operator</td><td>	a != b</td></tr>
+<tr><td>&gt; </td><td>	Bigger than</td><td> a&gt; b</td></tr>
+<tr><td>&lt ;</td><td>	Less than </td><td>a &lt  b</td></tr>
+<tr><td>&gt;=</td><td> 	Bigger than or equal to</td><td> a&gt;= b</td></tr>
+<tr><td>&lt;= </td><td>	Less than or equal to </td><td>a &lt;= b</td></tr></table>
+<br>
+<h4>Logical operators</h4>
+
+  <p>  ! NOT (example: !a)</p>
+    <p>&& AND (example: a && b)</p>
+   <p> || OR (example: a || b)</p>
+
+Those operators are great when working with boolean values.
+
+<br>
+<h4>Compound assignment operators</h4>
+
+<p>Those operators are useful to perform an assignment and at the same time perform an arithmetic operation:</p>
+<table><tr><th>Operator </th><th>	Name</th><th>Example</th></tr>
+<tr><td>+=</td><td> Addition assignment </td><td>a += b</td></tr>
+<tr><td>-=</td><td> Subtraction assignment </td><td>a -= b</td></tr>
+<tr><td>*= </td><td>Multiplication assignment</td><td> a *= b</td></tr>
+<tr><td>/= </td><td>	Division assignment</td><td> a /= b</td></tr>
+<tr><td>%=</td><td> Modulo assignment</td><td> a %= b</td></tr>
+  </table>
+</section>
+  
+<section class="main-section" id="conditionals">
+<h3>Conditionals</h3>
+
+<p>We want to check data, and make choices based on the state of that data.
+
+C provides us 2 ways to do so.</p>
+
+<p>The first is the if statement, with its else helper, and the second is the switch statement.</p>
+<h4>if</h4>
+
+<p>In an if statement, you can check for a condition to be true, and then execute the block provided in the curly brackets:</p>
+<div class="code"> <code> int a = 1; <br>
+
+if (a == 1) {<br>
+  /* do something */<br>
+}<br></code> </div >
+
+<p>You can append an else block to execute a different block if the original condition turns out to be false:</p>
+
+<div class="code"><code> int a = 1;<br>
+
+if (a == 2) {<br>
+  /* do something */<br>
+} else {<br>
+  /* do something else */<br>
+}<br></code> </div>
+
+
+<h5>The ternary operator</h5>
+
+<p>The ternary operator is the only operator in C that works with 3 operands, and it’s a short way to express conditionals.</p>
+
+<p>This is how it looks:</p>
+
+<div class="code"><code> <condition> ? <expression> : <expression></code> </div>
+
+<p>Example:</p>
+
+<div class="code"><code> a ? b : c</code> </div>
+
+<p>If a is evaluated to true, then the b statement is executed, otherwise c is.</p>
+
+<h4>switch</h4>
+
+<p>If you need to do too many if / else / if blocks to perform a check, perhaps because you need to check the exact value of a variable, then switch can be very useful to you.</p>
+
+<p>You can provide a variable as condition, and a series of case entry points for each value you expect:</p>
+<div class="code"><code> 
+int a = 1;<br>
+
+switch (a) {<br>
+  case 0:<br>
+    /* do something */<br>
+    break;<br>
+  case 1:<br>
+    /* do something else */<br>
+    break;<br>
+  case 2:<br>
+    /* do something else */<br>
+    break;<br>
+  default:<br>
+    /* handle all the other cases */<br>
+    break;<br>
+}</code> </div>
+
+<p>We need a break keyword at the end of each case to avoid the next case being executed when the one before ends. This "cascade" effect can be useful in some creative ways.You can add a "catch-all" case at the end, labeled default.</p>
+</section>
+<section class="main-section"  id="loops">
+<h3>Loops</h3>
+
+<p>C offers us three ways to perform a loop: </p>
+<ul><li>for loops, </li>
+<li>while loops </li>
+<li>and do while loops.</li> </ul>
+<p>They all allow you to iterate over arrays, but with a few differences. Let's see them in detail.</p>
+<h4>For loops</h4>
+
+<p>The first and probably most common way to perform a loop is for loops.</p>
+
+<p>Using the for keyword we can define the rules of the loop up front, and then provide the block that is going to be executed repeatedly.</p>
+
+<p>Like this:</p>
+<div class="code"><code> 
+for (int i = 0; i <= 10; i++) { <br>
+  /* instructions to be repeated */<br>
+}</code> </div>
+
+<p>The (int i = 0; i <= 10; i++) block contains 3 parts of the looping details:</p>
+
+    <ul><li>the initial condition (int i = 0)</li>
+   <li> the test (i <= 10)</li>
+    <li>the increment (i++)</li></ul>
+
+<p>Loops can also start from a high number, and go a lower number, like this:</p>
+
+<div class="code"><code> for (int i = 10; i > 0; i--) {<br>
+  /* instructions to be repeated */<br>
+}</code> </div>
+
+<p>You can also increment the loop variable by 2 or another value:</p>
+
+<div class="code"><code> for (int i = 0; i < 1000; i = i + 30) {<br>
+  /* instructions to be repeated */<br>
+}</code> </div>
+
+<h4>While loops</h4>
+<p>While loops is simpler to write than a for loop, because it requires a bit more work on your part.</p>
+
+<p>Instead of defining all the loop data up front when you start the loop, like you do in the for loop, using while you just check for a condition:</p>
+
+
+<div class="code"><code> int i = 0;<br>
+
+while (i < 10) {<br>
+  /* do something */<br>
+
+  i++;<br>
+}</code> </div>
+
+
+</h4>Do while loops</h4>
+
+<p>While loops are great, but there might be times when you need to do one particular thing: you want to always execute a block, and then maybe repeat it.</p>
+
+<p>This is done using the do while keyword. In a way it's very similar to a while loop, but slightly different:</p>
+
+<div class="code"><code> int i = 0;<br>
+
+do {<br>
+  /* do something */<br>
+
+  i++;<br>
+} while (i < 10);<br></code> </div>
+
+<p>In all the C loops we have a way to break out of a loop at any point  in time, immediately, regardless of the conditions set for the loop.</p>
+
+<p>This is done using the break keyword.
+
+This is useful in many cases. You might want to check for the value of a variable, for example:</p>
+
+<div class="code"><code> for (int i = 0; i <= 10; i++) {<br>
+  if (i == 4 && someVariable == 10) {<br>
+    break;<br>
+  }<br>
+}<br></code> </div>
+
+</section>
+<section class="main-section"  id="arrays">
+<h3>Arrays</h3>
+
+<p>An array is a variable that stores multiple values.</p>
+
+<p>Every value in the array, in C, must have the same type. This means you will have arrays of int values, arrays of double values, and more.The interesting thing about C arrays is that all elements of an array are stored sequentially, one right after another. Not something that normally happens with higher-level programming languages.</p>
+
+<p>You can define an array of int values like this:</p>
+
+<div class="code"><code> int prices[5];<code> </div>
+
+<p>You must always specify the size of the array. C does not provide dynamic arrays out of the box.
+
+You can use a constant to define the size:</p>
+
+<div class="code"><code> const int SIZE = 5;<br>
+int prices[SIZE];<code> </div>
+
+<p>You can initialize an array at definition time, like this:</p>
+
+<div class="code"><code> int prices[5] = { 1, 2, 3, 4, 5 };<code> </div>
+
+<p>But you can also assign a value after the definition, in this way:</p>
+
+<div class="code"><code> int prices[5];</code> </div>
+
+<div class="code"><code> prices[0] = 1;<br>
+prices[1] = 2;<br>
+prices[2] = 3;<br>
+prices[3] = 4;<br>
+prices[4] = 5;</code> </div>
+
+<p>Or, more practical, using a loop:</p>
+<div class="code"><code> 
+int prices[5];<br>
+
+for (int i = 0; i < 5; i++) {<br>
+  prices[i] = i + 1;<br>
+}</code> </div>
+</section>
+
+<section class="main-section" id="strings">
+<h3>Strings</h3>
+
+<p>In C, strings are one special kind of array: a string is an array of char values:</p>
+
+<div class="code"><code>char name[7];</code></div>
+
+<p>I introduced the char type when I introduced types, but in short it is commonly used to store letters of the ASCII chart.</p>
+
+<p>A string can be initialized like you initialize a normal array:</p>
+
+<div class="code"><code>char name[7] = { "M", "i", "c", "h", "e", "l" };</code></div>
+
+<p>Or more conveniently with a string literal (also called string constant), a sequence of characters enclosed in double quotes:</p>
+
+<div class="code"><code>char name[7] = "Michel";</code></div>
+
+<p>You can print a string via printf() using %s:</p>
+
+<div class="code"><code>printf("%s", name);</code></div>
+
+<p>Do you notice how "Michel" is 6 chars long, but I defined an array of length 7? Why? This is because the last character in a string must be a  0 value, the string terminator, and we must make space for it.</p>
+
+<p>Speaking of manipulating strings, there's one important standard library that is provided by C: string.h.</p>
+
+<p>This library is essential because it abstracts many of the low level details of working with strings, and provides us with a set of useful functions.
+
+You can load the library in your program by adding on top:</p>
+
+<div class="code"><code> #include &lt;string.h&gt;</code> </div>
+
+<ul>And once you do that, you have access to:
+
+    <li>strcpy() to copy a string over another string</li>
+    <li>strcat() to append a string to another string</li>
+   <li> strcmp() to compare two strings for equality</li>
+   <li> strncmp() to compare the first n characters of two strings</li>
+    <li>strlen() to calculate the length of a string</li></ul>
+
+</section>
+  <section class="main-section"  id="pointers">
+<h3>Pointers</h3>
+
+<p>A pointer is the address of a block of memory that contains a variable.
+
+When you declare an integer number like this:</p>
+
+<div class="code"><code> int age = 37;</code> </div>
+
+<p>We can use the & operator to get the value of the address in memory of a variable:</p>
+
+<div class="code"><code> printf("%p", &age); /* 0x7ffeef7dcb9c */</code> </div>
+
+<p>I used the %p format specified in printf() to print the address value.
+
+We can assign the address to a variable:</p>
+
+<div class="code"><code> int *address = &age;</code> </div>
+
+<p>Using int *address in the declaration, we are not declaring an integer variable, but rather a pointer to an integer.
+
+We can use the pointer operator * to get the value of the variable an address is pointing to:</p>
+
+<div class="code"><code> int age = 37;<br>
+int *address = &age;<br>
+printf("%u", *address); /* 37 */</code> </div>
+
+<p>This time we are using the pointer operator again, but since it's not a declaration this time it means "the value of the variable this pointer points to".
+
+In this example we declare an age variable, and we use a pointer to initialize the value:</p>
+
+<div class="code"><code> int age;<br>
+int *address = &age;<br>
+*address = 37;<br>
+printf("%u", *address);</code> </div>
+
+</section>
+<section class="main-section"  id="functions">
+<h3>Functions</h3>
+
+<p>Functions are the way we can structure our code into subroutines that we can:</p>
+
+   <p><em> give a name to<br>
+    call when we need them</em></p>
+
+<p>Starting from your very first program, a "Hello, World!", you immediately make use of C functions:</p>
+
+<div class="code"><code> #include &lt;stdio.h &gt;<br>
+
+int main(void) {<br>
+    printf("Hello, World!");<br>
+    }</code> </div>
+
+<p>The main() function is a very important function, as it's the entry point for a C program.</p>
+
+<p>Here's another function:</p>
+
+<div class="code"><code> void doSomething(int value) {<br>
+    printf("%u", value);<br>
+}</code> </div>
+
+<p><ul>Functions have 4 important aspects:
+
+    <li>they have a name, so we can invoke ("call") them later</li>
+     <li>they specify a return value</li>
+     <li>they can have arguments</li>
+    <li> they have a body, wrapped in curly braces </li></ul></p>
+
+<p>The function body is the set of instructions that are executed any time we invoke a function.
+
+If the function has no return value, you can use the keyword void before the function name. Otherwise you specify the function return value type (int for an integer, float for a floating point value, const char * for a string, etc).</p>
+
+<p>You cannot return more than one value from a function.</p>
+
+<p>A function can have arguments. They are optional. If it does not have them, inside the parentheses we insert void, like this:</p>
+
+<div class="code"><code> void doSomething(void) {<br>
+   /* ... */<br>
+}</code> </div>
+
+<p>In this case, when we invoke the function we'll call it with nothing in the parentheses:</p>
+
+<div class="code"><code> doSomething();</code> </div>
+
+<p>If we have one parameter, we specify the type and the name of the parameter, like this:</p>
+
+<div class="code"><code> void doSomething(int value) {
+   /* ... */
+}<c/ode> </div>
+
+<p>When we invoke the function, we'll pass that parameter in the parentheses, like this:</p>
+
+<div class="code"><code>doSomething(3);</code></div>
+
+<p>We can have multiple parameters, and if so we separate them using a comma, both in the declaration and in the invocation:</p>
+
+<div class="code"><code> void doSomething(int value1, int value2) {<br>
+   /* ... */<br>
+}
+
+doSomething(3, 4);</code> </div>
+
+<p>Parameters are passed by copy. This means that if you modify value1, its value is modified locally. The value outside of the function, where it was passed in the invocation, does not change.</p>
+
+<p>If you pass a pointer as a parameter, you can modify that variable value because you can now access it directly using its memory address.</p>
+
+
+    </section>
+  
+    <section class="main-section"  id="input_output">
+
+<h3>Input and output</h3>
+
+<p>C is a small language, and the "core" of C does not include any Input/Output (I/O) functionality.</p>
+
+<p>In the case of C, Input/Output is provided to us by the C Standard Library via a set of functions defined in the stdio.h header file.
+
+You can import this library using:</p>
+
+<div class="code"><code> #include &lt;stdio.h &gt;</code> </div>
+
+<p>on top of your C file.</p>
+
+<p><ul>This library provides us with, among many other functions:
+
+    <li>printf()</li>
+    <li>scanf()</li>
+    <li>sscanf()</li>
+    <li>fgets()</li>
+    <li>fprintf()</li></ul></p>
+
+<p><ul>Before describing what those functions do, I want to take a minute to talk about I/O streams.
+
+We have 3 kinds of I/O streams in C:
+
+    <li>stdin (standard input)</li>
+    <li>stdout (standard output)</li>
+   <li> stderr (standard error)</li></ul>
+
+With I/O functions we always work with streams. A stream is a high level interface that can represent a device or a file. From the C standpoint, we don't have any difference in reading from a file or reading from the command line: it's an I/O stream in any case.</p>
+
+<p>Some functions are designed to work with a specific stream, like printf(), which we use to print characters to stdout. Using its more general counterpart fprintf(), we can specify which stream to write to.</p>
+
+<p>Since I started talking about printf(), let's introduce it now.
+
+printf() is one of the first functions you'll use when learning C programming.
+
+In its simplest usage form, you pass it a string literal:</p>
+
+<code> printf("hey!"); </code>
+
+<p>and the program will print the content of the string to the screen.
+
+You can print the value of a variable. But it's a bit tricky because you need to add a special character, a placeholder, which changes depending on the type of the variable. For example we use %d for a signed decimal integer digit:</p>
+
+<div class="code"><code> int age = 37;<br>
+
+printf("My age is %d", age);</code> </div>
+
+We can print more than one variable by using commas:
+
+<div class="code"><code> int age_yesterday = 37;<br>
+int age_today = 36;<br>
+
+printf("Yesterday my age was %d and today is %d", age_yesterday, age_today);<br></code></div>
+
+<p><ul>There are other format specifiers like %d:
+
+  <li>  %c for a char</li>
+  <li>  %s for a char</li>
+   <li> %f for floating point numbers</li>
+    <li>%p for pointers</li></ul>
+
+and many more.</p>
+
+<p>We can use escape characters in printf(), like \n which we can use to make the output create a new line.</p>
+
+<p>let’s talk now about scanf().</p>
+
+<p>printf() is used as an output function. I want to introduce an input function now, so we can say we can do all the I/O thing: scanf(). This function is used to get a value from the user running the program, from the command line.</p>
+
+<p>We must first define a variable that will hold the value we get from the input:</p>
+
+<code> int age;</code> 
+
+<p> Then we call scanf() with 2 arguments: the format (type) of the variable, and the address of the variable:</p>
+
+<div class="code"><code> scanf("%d", &age);</code> </div>
+
+<p>If we want to get a string as input, remember that a string name is a pointer to the first character, so you don't need the & character before it:</p>
+
+<div class="code"><code> char name[20];<br>
+scanf("%s", name);</code> </div>
+
+
+</section>
+    
+<section class="main-section"  id="variable_scope">
+<h3>Variable scope</h3>
+
+When you define a variable in a C program, depending on where you declare it, it will have a different scope.
+
+This means that it will be available in some places, but not in others.
+
+The position determines 2 types of variables:
+
+    global variables
+    local variables
+
+This is the difference: a variable declared inside a function is a local variable, like this:
+
+<div class="code"><code> int main(void) {<br>
+  int age = 37;<br>
+}</code> </div>
+
+Local variables are only accessible from within the function, and when the function ends they stop their existence. They are cleared from the memory (with some exceptions).
+
+A variable defined outside a function is a global variable, like in this example:
+
+<div class="code"><code> int age = 37;<br>
+
+int main(void) {<br>
+  /* ... */<br>
+}</code> </div>
+
+Global variables are accessible from any function of the program, and they are available for the whole execution of the program, until it ends.
+
+I mentioned that local variables are not available any more after the function ends.
+
+The reason is that local variables are declared on the stack, by default, unless you explicitly allocate them on the heap using pointers. But then you have to manage the memory yourself.
+
+</section>
+  <section class="main-section"  id="static_variable">
+<h3>Static variables</h3>
+
+Inside a function, you can initialize a static variable using the static keyword.
+
+I said "inside a function" because global variables are static by default, so there's no need to add the keyword.
+
+What's a static variable? A static variable is initialized to 0 if no initial value is specified, and it retains the value across function calls.
+
+Consider this function:
+
+<div class="code"><code> int incrementAge() {<br>
+  int age = 0;<br>
+  age++;<br>
+  return age;<br>
+}</code> </div>
+
+If we call incrementAge() once, we'll get 1 as the return value. If we call it more than once, we'll always get 1 back, because age is a local variable and it's re-initialized to 0 on every single function call.
+If we change the function to:
+<div class="code"><code> int incrementAge() {<br>
+  static int age = 0;<br>
+  age++;<br>
+  return age;<br>
+}</code> </div>
+Now every time we call this function, we'll get an incremented value:
+<div class="code"><code> printf("%d\n", incrementAge());<br>
+printf("%d\n", incrementAge());<br>
+printf("%d\n", incrementAge());</code> </div>
+<br><br>
+will give us
+<div class="code"><code> 1<br>
+2<br>
+3</code> </div>
+<br>
+We can also omit initializing age to 0 in static int age = 0;, and just write static int age; because static variables are automatically set to 0 when created.
+We can also have static arrays. In this case, each single item in the array is initialized to 0:
+<div class="code"></code> int incrementAge() {<br>
+  static int ages[3];<br>
+  ages[0]++;<br>
+  return ages[0];<br>}</code> </div></section>
+    <section class="main-section"  id="global_variables">
+
+<h3>Global variables</h3>
+
+In this section I want to talk more about the difference between global and local variables.
+
+A local variable is defined inside a function, and it's only available inside that function.
+
+Like this:
+
+<div class="code"><code> #include &lt;stdio.h &gt;<br>
+
+int main(void) {<br>
+  char j = 0;<br>
+  j += 10;<br>
+  printf("%u", j); //10<br>
+}</code> </div>
+
+j is not available anywhere outside the main function.
+
+A global variable is defined outside of any function, like this:
+
+<div class="code"><code> #include &lt;stdio.h &gt;<br>
+
+char i = 0;<br>
+
+int main(void) {<br>
+  i += 10;<br>
+  printf("%u", i); //10<br>
+}</code> </div>
+
+A global variable can be accessed by any function in the program.  Access is not limited to reading the value: the variable can be updated by any function.
+
+Due to this, global variables are one way we have of sharing the same data between functions.
+
+The main difference with local variables is that the memory allocated for variables is freed once the function ends.
+
+Global variables are only freed when the program ends.
+</section>
+<section class="main-section"  id="type_definitions">
+<h3>Type definitions</h3>
+
+The typedef keyword in C allows you to defined new types.
+
+Starting from the built-in C types, we can create our own types, using this syntax:
+
+typedef existingtype NEWTYPE
+
+The new type we create is usually, by convention, uppercase.
+
+This it to distinguish it more easily, and immediately recognize it as type.
+
+For example we can define a new NUMBER type that is an int:
+
+<div class="code"><code> typedef int NUMBER</code> </div>
+
+and once you do so, you can define new NUMBER variables:
+
+<div class="code"><code> NUMBER one = 1;</code> </div>
+
+Now you might ask: why? Why not just use the built-in type int instead?
+
+Well, typedef gets really useful when paired with two things: enumerated types and structures.
+</section>
+<section class="main-section"  id="enumerate_types">
+
+<h3>Enumerated types</h3>
+
+Using the typedef and enum keywords we can define a type that can have either one value or another.
+
+It's one of the most important uses of the typedef keyword.
+
+This is the syntax of an enumerated type:
+
+<div class="code"><code> typedef enum {<br>
+  //...values<br>
+} TYPENAME;</code> </div>
+
+The enumerated type we create is usually, by convention, uppercase.
+
+Here is a simple example:
+
+<div class="code"><code> typedef enum {<br>
+  true,<br>
+  false<br>
+} BOOLEAN;</code> </div>
+
+
+<h3>Structures</h3>
+
+Using the struct keyword we can create complex data structures using basic C types.
+
+A structure is a collection of values of different types. Arrays in C are limited to a type, so structures can prove to be very interesting in a lot of use cases.
+
+This is the syntax of a structure:
+
+<div class="code"><code> struct <structname> {<br>
+  //...variables<br>
+};</code> </div >
+
+Example:
+
+<div class="code"><code> struct person {<br>
+  int age;<br>
+  char *name;<br>
+};</code> </div>
+
+You can declare variables that have as type that structure by adding them after the closing curly bracket, before the semicolon, like this:
+
+<div class="code"></code> struct person {<br>
+  int age<br>
+  char *name;<br>
+} michel;</code> </div>
+
+Structures are very useful because we can pass them around as function parameters, or return values, embedding various variables within them. Each variable has a label.
+
+It's important to note that structures are passed by copy, unless of course you pass a pointer to a struct, in which case it's passed by reference.
+
+Using typedef we can simplify the code when working with structures.
+
+Let's look at an example:
+
+<div class="code"><code> typedef struct {<br>
+  int age;<br>
+  char *name;<br>
+} PERSON;</code> </div>
+
+The structure we create using typedef is usually, by convention, uppercase.
+
+Now we can declare new PERSON variables like this:
+
+<div class="code"><code> PERSON michel;</code> </div>
+
+and we can initialize them at declaration in this way:
+
+<div class="code"><code> PERSON michel = { 37, "Flavio" };</code></div> 
+
+
+</section>
+    <section class="main-section"  id="command_line_parameters">
+<h3>Command line parameters</h3>
+
+In your C programs, you might need to accept parameters from the command line when the command launches.
+For simple needs, all you need to do to do so is change the main() function signature from
+<div class="code"><code> int main(void)<br>
+to<br>
+int main (int argc, char *argv[])</code> </div>
+argc is an integer number that contains the number of parameters that were provided in the command line.
+argv is an array of strings.
+When the program starts, we are provided the arguments in those 2 parameters.
+Note that there's always at least one item in the argv array: the name of the program
+Let's take the example of the C compiler we use to run our programs, like this:
+gcc hello.c -o hello
+If this was our program, we'd have argc being 4 and argv being an array containing
+   
+<div class="terminal"> gcc<br>
+    hello.c<br>
+    -o<br>
+    hello</div>
+
+Let's write a program that prints the arguments it receives:
+<div class="code"><code> #include &lt;stdio.h &gt;<br>
+int main (int argc, char *argv[]) {<br>
+  for (int i = 0; i < argc; i++) {<br>
+    printf("%s\n", argv[i]);<br>
+  }
+}</code> </div class="code">
+If the name of our program is hello and we run it like this: ./hello, we'd get this as output:
+
+<div class="terminal">./hello<br></div>
+
+If we pass some random parameters, like this: ./hello a b c we'd get this output to the terminal:
+
+<div class="terminal">./hello<br>
+a<br>
+b<br>
+c<br></div>
+
+This system works great for simple needs. For more complex needs, there are commonly used packages like getopt.
+
+</section>
+    <section class="main-section"  id="headers_files">
+<h3>Headers files</h3>
+
+Simple programs can be put in a single file. But when your program grows larger it's impossible to keep it all in just one file.
+
+You can move parts of a program to a separate file. Then you create a header file.
+
+A header file looks like a normal C file, except it ends with .h instead of .c. Instead of the implementations of your functions and the other parts of a program, it holds the declarations.
+
+You already used header files when you first used the printf() function, or other I/O function, and you had to type:
+
+<div class="code"><code> #include &lt;stdio.h &gt;</code> </div>
+
+to use it.
+
+#include is a preprocessor directive.
+
+The preprocessor goes and looks up the stdio.h file in the standard library because you used brackets around it. To include your own header files, you'll use quotes, like this:
+
+<div class="code"><code> #include "myfile.h"</code> </div>
+
+The above will look up myfile.h in the current folder.
+
+You can also use a folder structure for libraries:
+
+<div class="code"><code> #include "myfolder/myfile.h"</code> </div>
+
+
+</section>
+    <section class="main-section"  id="preprocessor">
+<h3>The preprocessor</h3>
+
+The preprocessor is a tool that helps us a lot when programming with C. It is part of the C Standard, just like the language, the compiler, and the standard library.
+
+It parses our program and makes sure that the compiler gets all the things it needs before going on with the process.
+
+What does it do, in practice?
+
+For example, it looks up all the header files you include with the #include directive.
+
+It also looks at every constant you defined using #define and substitutes it with its actual value.
+
+That's just the start. I mentioned those 2 operations because they are the most common ones. The preprocessor can do a lot more.
+
+Did you notice ##include and ##define have a # at the beginning? That's common to all the preprocessor directives. If a line starts with #, that's taken care of by the preprocessor.
+Conditionals
+
+One of the things we can do is to use conditionals to change how our program will be compiled, depending on the value of an expression.
+
+For example we can check if the DEBUG constant is 0:
+
+<div class="code"><code> #include &lt;stdio.h &gt;<br>
+
+const int DEBUG = 0;<br>
+
+int main(void) {<br>
+#if DEBUG == 0<br>
+  printf("I am NOT debugging\n");<br>
+#else<br>
+  printf("I am debugging\n");<br>
+#endif<br>
+}</code></div> </section>
+    <section class="main-section"  id="symbolic_constants">
+<h3>Symbolic constants</h3>
+
+We can define a symbolic constant:
+
+<div class="code"><code> #define VALUE 1<br>
+#define PI 3.14<br>
+#define NAME "Michel"</code> </div>
+
+When we use NAME or PI or VALUE in our program, the preprocessor replaces its name with the value before executing the program.
+
+Symbolic constants are very useful because we can give names to values without creating variables at compilation time.
+Macros
+
+With #define we can also define a macro. The difference between a macro and a symbolic constant is that a macro can accept an argument and typically contains code, while a symbolic constant is a value:
+
+<div class="code"><code> #define POWER(x) ((x) * (x))</code></div> 
+
+Notice the parentheses around the arguments: this is a good practice to avoid issues when the macro is replaced in the precompilation process.
+
+Then we can use it in our code like this:
+
+<div class="code"><code> printf("%u\n", POWER(4)); //16</code> </div>
+
+The big difference with functions is that macros do not specify the type of their arguments or return values, which might be handy in some cases.
+
+Macros, however, are limited to one line definitions.
+If defined
+
+We can check if a symbolic constant or a macro is defined using #ifdef:
+
+<div class="code"><code> #include &lt;stdio.h &gt;<br>
+#define VALUE 1<br>
+<br>
+int main(void) {<br>
+#ifdef VALUE<br>
+  printf("Value is defined\n");<br>
+#else<br>
+  printf("Value is not defined\n");<br>
+#endif<br>
+}</code> </div>
+
+We also have #ifndev to check for the opposite (macro not defined).
+
+We can also use #if defined and #if !defined to do the same task.
+
+It's common to wrap some block of code into a block like this:
+
+<div class="code"><code> #if 0<br>
+
+#endif</code> </div>
+
+to temporarily prevent it from running, or to use a DEBUG symbolic constant:
+
+<div class="code"><code> #define DEBUG 0<br>
+
+#if DEBUG<br>
+  //code only sent to the compiler<br>
+  //if DEBUG is not 0<br>
+#endif</code> </div>
+
+Predefined symbolic constants you can use
+
+The preprocessor also defines a number of symbolic constants you can use, identified by the 2 underscores before and after the name, including:
+<div class="code"><code> 
+    __LINE__  // translates to the current line in the source code file<br>
+    __FILE__ // translates to the name of the file<br>
+    __DATE__ // translates to the compilation date, in the Mmm gg aaaa format<br>
+    __TIME__ //translates to the compilation time, in the hh:mm:ss format<br>
+</code> </div>
+</section>
+    
+      
+    </main>
+    <footer class="footer">
+<h3 id="reference">Reference</h3>
+For more tutorials, check out the blog on flaviocopes.com.
+<a href="https://www.freecodecamp.org/news/the-c-beginners-handbook/">link reference</a>
+    </footer>
+  </div>
+  <script src='https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js'></script>
+</body>
+
+</html>
